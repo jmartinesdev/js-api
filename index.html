@@ -6,14 +6,44 @@
     <title>Document</title>
 </head>
 <body>
-    <div id="content"></div>
+    <h1>Imformacao</h1>
+    <ul id="info"></ul>
 
     <script>
-        fetch('https://ci-swapi.herokuapp.com/api/')
-        .then(responde = response.text())
-        .then(data => {
-            document.getElementById('content').innerText = data;
+        /*
+        const url = 'http://swapi.dev/api/people/1';
+        fetch(url)
+        .then(res => {
+            res.json().then(data => {
+                const ul = document.getElementById('info');
+                const li = document.createElement('li');
+                const h4 = document.createElement('h4');
+                h4.innerHTML = `${data.name}`
+                ul.appendChild(li);
+                li.appendChild(h4);
+            })
+        }) 
+        .catch(err => console.log('Nao foi possivel achar a informacao' + err));
+        */
+
+        const urlAll = 'http://swapi.dev/api/people';
+
+        fetch(urlAll)
+        .then(res => {
+            res.json().then(data => {
+                let chars = data.results;
+
+                return chars.map(char => {
+                    const ul = document.getElementById('info');
+                    const li = document.createElement('li');
+                    const h4 = document.createElement('h4');
+                    h4.innerHTML = `${char.name}`
+                    ul.appendChild(li);
+                    li.appendChild(h4);
+                })
+            })
         })
+        .catch(err => console.log('Nao foi possivel achar a informacao' + err));
     </script>
 </body>
 </html>
