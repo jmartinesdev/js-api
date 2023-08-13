@@ -61,6 +61,8 @@ async function getStatus(e) {
 
 }
 
+function nome()
+
 function displayException(data) {
 
     let heading = `<div class="error-heading">An Exception Occurred</div>`;
